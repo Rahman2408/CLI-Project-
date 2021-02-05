@@ -1,4 +1,6 @@
 require_relative '../config/environment'
 
-class Route 
-end
+class Data 
+
+
+end  

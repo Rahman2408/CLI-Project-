@@ -4,30 +4,23 @@ class UI
     def greeting
         puts  "Hi!" 
         sleep(1)
-        puts "Welcome to Currency Currently!"
+        puts "Welcome to your currency tranlslator! Here, you can find out what your money means in a particular country or all over the world!"  
+    end
+
+    def currency_codes
+         
+    end
+
+    def input
+        puts "What is the currency you currently use and would like to compare others to?"
+        input = gets.strip
+        API.get_currency(input)
         
     end
 
-    def user_from
-        puts "start point?"
-        # input = gets.strip 
-        # @@start_point = input
-        start_point = "New York, NY"
-    end
-
     def user_to
-        puts "end point?"
-        # input2 = gets.strip
-        # @@end_point = input2
-        end_point = "San Diego, CA"
+   
     end
  
-#    def self.starting
-#     self.user_from
-#    end
-   
-#    def self.ending
-#     self.user_to
-#    end
-# binding.pry
+
 end

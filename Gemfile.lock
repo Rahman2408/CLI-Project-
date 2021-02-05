@@ -13,6 +13,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    table_print (1.5.7)
 
 PLATFORMS
   ruby
@@ -20,6 +21,7 @@ PLATFORMS
 DEPENDENCIES
   httparty
   pry
+  table_print
 
 BUNDLED WITH
    2.2.7
