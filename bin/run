@@ -3,4 +3,5 @@
 require_relative '../config/environment'
 
 
-    UI.new.greeting
+   # UI.new.greeting
+  API.new.request_api
