@@ -2,7 +2,7 @@ require_relative '../config/environment'
 
 class Database
 
-    
+  
   @@database =
 {
   "aed"=> {
@@ -723,7 +723,7 @@ class Database
   "eur"=> {
     "priority"=> 2,
     "iso_code"=> "EUR",
-    "name"=> "Euro",
+    "name"=> "European Euro",
     "symbol"=> "€",
     "alternate_symbols"=> [],
     "subunit"=> "Cent",
@@ -2718,9 +2718,16 @@ class Database
         end   
       end
   
+      def self.find_by_location
+        @@database.collect do|key ,value|
+        currency_hash = {}
+        currency_hash[value["name"]]=value
+        currency_hash
+        end   
+      end
   
 end  
 
-  # binding.pry  
+
 
 

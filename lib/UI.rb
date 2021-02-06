@@ -17,7 +17,7 @@ class UI
         puts "Please enter the currency you currently use by its three-letter ISO code and would like to compare others to."
         sleep(1)
         puts "If you're unsure, simply type 'help' for a list of all countries with their code."
-        @@input = gets.strip
+        @@input = gets.downcase.strip
             
             if @@input == "help"
                 puts Database.legend
@@ -28,7 +28,7 @@ class UI
                 response = API.get_currency(@@input)
                 self.next_step(response)
             elsif Database.all.has_key?(@@input) 
-              response = API.get_currency(@@input)
+                response = API.get_currency(@@input)
                 self.next_step(response)
             elsif @@input == "exit"
                 exit
@@ -41,8 +41,10 @@ class UI
     end
 
     def next_step(data)
-       
+        puts "Great! I see you current currency is: #{Database.all["#{@@input}"]["name"]}"
+       binding.pry
     end
     
 
 end
+
