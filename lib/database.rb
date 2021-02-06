@@ -1,9 +1,9 @@
 require_relative '../config/environment'
 
-class Data 
+class Database
 
     
-@@database =
+  @@database =
 {
   "aed"=> {
     "priority"=> 100,
@@ -2706,17 +2706,21 @@ class Data
     "smallest_denomination"=> 5
   }
 }
-    def self.legend
+  def self.all
+    @@database
+  end
+
+  def self.legend
         @@database.collect do|key, value|
         currency_hash = {}
         currency_hash[value["name"]] = key
-         currency_hash
-    # binding.pry
-        end 
-    end
+        currency_hash
+        end   
+      end
+  
+  
 end  
-puts Data.legend
 
-
+  # binding.pry  
 
 

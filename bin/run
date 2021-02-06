@@ -3,5 +3,5 @@
 require_relative '../config/environment'
 
 
-   UI.new.input
+   UI.new.greeting
 
