@@ -14,11 +14,13 @@ class UI
     def input
         puts "What is the currency you currently use and would like to compare others to?"
         input = gets.strip
-        API.get_currency(input)
-        
+        respnse = API.get_currency(input)
+        # self.use_data(response)
+        # binding.pry 
     end
 
-    def user_to
+    def use_data(data)
+
    
     end
  

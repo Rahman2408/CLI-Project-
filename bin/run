@@ -3,6 +3,5 @@
 require_relative '../config/environment'
 
 
-   # UI.new.greeting
+   UI.new.input
 
-  API.new.get_currency
