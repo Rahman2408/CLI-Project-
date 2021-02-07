@@ -1,6 +1,6 @@
 require_relative '../config/environment'
 
-class Database
+class DataHandler
 
   
   @@database =
@@ -2816,26 +2816,50 @@ class Database
         currency_hash[value["name"]] = key.upcase
         currency_hash
         end   
-      end
+  end
   
-      def self.info_by_country
+  def self.info_by_country
         @@database.collect do|key ,value|
         currency_hash = Hash.new
         currency_hash[value["name"]]=value
         currency_hash
         end   
-      end
+   end
 
-      def self.list_of_countries
+  def self.list_of_countries
         @@database.collect do|key ,value|
           countries = []
           countries << value["name"]
           countries 
           end
-      end
+  end
   
-end  
+  def self.legend_table
+        rows = []
+        
+        self.find_by_code.map do |key ,value|
+        countries = []
+        countries << key.first 
+        rows << countries.transpose.flatten!(1)
+        end        
+    
+        table = Terminal::Table.new :title => "Currency Legend".colorize(:green), :headings => ['Country'.colorize(:red), 'ISO Code'.colorize(:yellow)], :rows => rows
+        puts table 
+  end
+  def self.response_table
+    rows = []
 
+    API.all_formatted.map do |key ,value|
+    countries = []
+    countries << key.first 
+    rows << countries.transpose.flatten!(1)
+    end        
+    
+    table = Terminal::Table.new :title => "Exchange Rates".colorize(:red), :headings => ['Country'.colorize(:yellow), 'Value'.colorize(:green)], :rows => rows
+    puts table 
+  end
+end
+      
 
 
 

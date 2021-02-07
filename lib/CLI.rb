@@ -5,56 +5,53 @@ class CLI
     
     
     def greeting
-        puts  "Hi!".colorize(:blue) 
-        sleep(1)
-        puts "Welcome to your currency tranlslator! Here, you can find out what your money means in a particular country or all over the world!".colorize(:blue)
-        sleep(2)
-        self.currency_info_greet
-    end
-
-    def currency_info_greet
-        puts "Please type the currency you currently use by its three-letter ISO code and press enter.".colorize(:blue)
-        sleep(1)
-        puts "If you're unsure, simply type 'help' and press enter for a list of all countries with their corresponding code.".colorize(:yellow)
+        puts  "Hi!".colorize(:yellow) 
+        # sleep(1)
+        puts "Welcome to your currency tranlslator! Here, you can find out what your money means in a particular country or all over the world!".colorize(:yellow)
+        # sleep(2)
         self.currency_info
     end
 
     def currency_info
-        
+        puts "Please type the currency you currently use by its three-letter ISO code and press enter.".colorize(:yellow)
+        # sleep(1)
+        puts "If you're unsure, simply type 'help' and press enter for a list of all countries with their corresponding code.".colorize(:yellow)      
         @@input = gets.downcase.strip
-            
             if @@input == "help"
-                ap Database.find_by_code
-                sleep(1)
-                puts "Please refer to the legend above to enter your ISO code.".colorize(:yellow)
+                DataHandler.legend_table
+                # sleep(1)
+                # binding.pry
+                puts "You can refer to the legend above to enter the ISO code.".colorize(:yellow)
                 sleep(1)
                 self.currency_info
-            elsif Database.all.has_key?(@@input) 
+            elsif DataHandler.all.has_key?(@@input) 
                 response = API.get_currency(@@input)
+                # binding.pry
                 self.options(response)
             elsif @@input == "exit"
                 exit
             else
                 puts "Hmmm..I couldn't seem to understand that, lets try again.".colorize(:red)
-                self.currency_info_greet 
+                self.currency_info 
             end
-    end
+  
+        end
 
     def options(data)
-        puts "Your native currency is the #{Database.all["#{@@input}"]["name"]}.".colorize(:blue)
+        puts "Your native currency is the #{DataHandler.all["#{@@input}"]["name"]}.".colorize(:yellow)
         sleep(1)
-        puts "What would you like to do next? Select one of the following by typing in its associated number and pressing enter:".colorize(:blue)
+        puts "What would you like to do next? Select one of the following by typing in its associated number and pressing enter:".colorize(:yellow)
         puts "1. Compare to another country's currency.".colorize(:green)
         puts "2. Compare to currencies all accross the world.".colorize(:green)
-        puts "3. Start over.".colorize(:yellow)
+        puts "3. Start over.".colorize(:blue)
         puts "4. Exit.".colorize(:red)
         input = gets.strip
             if input == "1" 
-                self.compare_to_other_greet
+                self.compare_to_other
             elsif input == "2"
                 self.compare_to_all
             elsif input == "3"
-                self.currency_info_greet
+                self.currency_info
             elsif input == "4"
                 exit
             else
@@ -62,41 +59,36 @@ class CLI
                 self.options(@@input)
         end 
     end
-    
-    def compare_to_other_greet
-        puts "Okay, please type and enter the three-letter ISO code for the country you'd like to compare yours to.".colorize(:blue)
+    def compare_to_other
+        puts "Please type and enter the three-letter ISO code for the country you'd like to compare yours to.".colorize(:yellow)
         puts "If you'd like to take another look at the legend, just type and enter 'help' again.".colorize(:yellow)
         sleep(2)
-        self.compare_to_other
-    end
-
-    def compare_to_other    
         input = gets.downcase.strip
         if input == "help"
-            puts Database.find_by_code
+            DataHandler.legend_table
             sleep(1)
             puts "Refer to the list above to find the code for the country you'd like to compare your currency to.".colorize(:yellow)
             self.compare_to_other
-        elsif Database.all.has_key?(input)
-            puts "Nice! You're looking to compare to #{Database.all["#{input}"]["name"]}s.".colorize(:blue)
+        elsif DataHandler.all.has_key?(input)
+            puts "Nice! You're looking to compare to #{DataHandler.all["#{input}"]["name"]}s.".colorize(:yellow)
             sleep(1)
-            puts "Each #{Database.all["#{@@input}"]["name"]} is equal to #{API.all[input.upcase]} #{Database.all["#{input}"]["name"]}s.".colorize(:green) 
+            puts "Each #{DataHandler.all["#{@@input}"]["name"]} is equal to #{API.all[input.upcase]} #{DataHandler.all["#{input}"]["name"]}s.".colorize(:green) 
             sleep(2) 
-            puts "Now that you know the actual value of #{Database.all["#{input}"]["name"]}s, here's some more details specific to the currency:".colorize(:blue)
+            puts "Now that you know the actual value of #{DataHandler.all["#{input}"]["name"]}s, here's some more details specific to the currency:".colorize(:yellow)
             sleep(2)
-            ap Database.all[input]
+            ap DataHandler.all[input]####
             sleep(3)
             self.options(@@input)
         elsif input == "exit"
              exit
         else
              puts "Hmmm..I couldn't seem to understand that, lets try again.".colorize(:red)
-             self.compare_to_other_greet 
+             self.compare_to_other 
         end
     end
 
     def compare_to_all
-       ap API.all_formatted
+    DataHandler.response_table
     self.options(@@input)
     end
 end

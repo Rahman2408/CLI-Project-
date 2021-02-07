@@ -16,7 +16,7 @@ class API
     def self.all_formatted
         @@all_currencies.collect do |key,value| 
             new_hash={}
-            new_hash[Database.all[key.downcase]["name"]] = value
+            new_hash[DataHandler.all[key.downcase]["name"]] = value
             new_hash 
         end
     end

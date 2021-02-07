@@ -16,6 +16,9 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     table_print (1.5.7)
+    terminal-table (3.0.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
+    unicode-display_width (1.7.0)
 
 PLATFORMS
   ruby
@@ -26,6 +29,7 @@ DEPENDENCIES
   httparty
   pry
   table_print
+  terminal-table
 
 BUNDLED WITH
    2.2.7
