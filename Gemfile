@@ -8,4 +8,5 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gem 'pry'
 gem 'httparty'
 gem 'table_print'
+gem 'awesome_print'
 gem 'colorize'

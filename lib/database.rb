@@ -769,6 +769,23 @@ class Database
     "iso_numeric"=> "238",
     "smallest_denomination"=> 1
   },
+  "fok"=> {
+    "priority"=> 100,
+    "iso_code"=> "FOK",
+    "name"=> "Faroese Krona",
+    "symbol"=> "£",
+    "disambiguate_symbol"=> "FO£",
+    "alternate_symbols"=> ["FK£"],
+    "subunit"=> "Penny",
+    "subunit_to_unit"=> 100,
+    "symbol_first"=> false,
+    "format"=> "%n %u",
+    "html_entity"=> "&#x00A3;",
+    "decimal_mark"=> ".",
+    "thousands_separator"=> ",",
+    "iso_numeric"=> "238",
+    "smallest_denomination"=> 1
+  },
   "gbp"=> {
     "priority"=> 3,
     "iso_code"=> "GBP",
@@ -798,6 +815,23 @@ class Database
     "decimal_mark"=> ".",
     "thousands_separator"=> ",",
     "iso_numeric"=> "981",
+    "smallest_denomination"=> 1
+  },
+  "ggp"=> {
+    "priority"=> 100,
+    "iso_code"=> "FKP",
+    "name"=> "Guernsey Pound",
+    "symbol"=> "£",
+    "disambiguate_symbol"=> "FK£",
+    "alternate_symbols"=> ["FK£"],
+    "subunit"=> "Penny",
+    "subunit_to_unit"=> 100,
+    "symbol_first"=> false,
+    "format"=> "%n %u",
+    "html_entity"=> "&#x00A3;",
+    "decimal_mark"=> ".",
+    "thousands_separator"=> ",",
+    "iso_numeric"=> "238",
     "smallest_denomination"=> 1
   },
   "ghs"=> {
@@ -1006,6 +1040,23 @@ class Database
     "iso_numeric"=> "376",
     "smallest_denomination"=> 10
   },
+  "imp"=> {
+    "priority"=> 100,
+    "iso_code"=> "FKP",
+    "name"=> "Manx Pound",
+    "symbol"=> "£",
+    "disambiguate_symbol"=> "FK£",
+    "alternate_symbols"=> ["FK£"],
+    "subunit"=> "Penny",
+    "subunit_to_unit"=> 100,
+    "symbol_first"=> false,
+    "format"=> "%n %u",
+    "html_entity"=> "&#x00A3;",
+    "decimal_mark"=> ".",
+    "thousands_separator"=> ",",
+    "iso_numeric"=> "238",
+    "smallest_denomination"=> 1
+  },
   "inr"=> {
     "priority"=> 100,
     "iso_code"=> "INR",
@@ -1160,6 +1211,23 @@ class Database
     "thousands_separator"=> ",",
     "iso_numeric"=> "116",
     "smallest_denomination"=> 5000
+  },
+  "kid"=> {
+    "priority"=> 100,
+    "iso_code"=> "FKP",
+    "name"=> "Kiribati Dollar",
+    "symbol"=> "£",
+    "disambiguate_symbol"=> "FK£",
+    "alternate_symbols"=> ["FK£"],
+    "subunit"=> "Penny",
+    "subunit_to_unit"=> 100,
+    "symbol_first"=> false,
+    "format"=> "%n %u",
+    "html_entity"=> "&#x00A3;",
+    "decimal_mark"=> ".",
+    "thousands_separator"=> ",",
+    "iso_numeric"=> "238",
+    "smallest_denomination"=> 1
   },
   "kmf"=> {
     "priority"=> 100,
@@ -2087,6 +2155,22 @@ class Database
     "iso_numeric"=> "678",
     "smallest_denomination"=> 10000
   },
+  "stn"=> {
+    "priority"=> 100,
+    "iso_code"=> "STN",
+    "name"=> "São Tomé Dobra",
+    "symbol"=> "Db",
+    "alternate_symbols"=> [],
+    "subunit"=> "Cêntimo",
+    "subunit_to_unit"=> 100,
+    "symbol_first"=> false,
+    "format"=> "%n %u",
+    "html_entity"=> "",
+    "decimal_mark"=> ".",
+    "thousands_separator"=> ",",
+    "iso_numeric"=> "678",
+    "smallest_denomination"=> 10000
+  },
   "svc"=> {
     "priority"=> 100,
     "iso_code"=> "SVC",
@@ -2242,6 +2326,22 @@ class Database
     "thousands_separator"=> ",",
     "iso_numeric"=> "780",
     "smallest_denomination"=> 1
+  },
+  "tvd"=> {
+    "priority"=> 100,
+    "iso_code"=> "TVD",
+    "name"=> "Tuvaluan Dollar",
+    "symbol"=> "Db",
+    "alternate_symbols"=> [],
+    "subunit"=> "Cêntimo",
+    "subunit_to_unit"=> 100,
+    "symbol_first"=> false,
+    "format"=> "%n %u",
+    "html_entity"=> "",
+    "decimal_mark"=> ".",
+    "thousands_separator"=> ",",
+    "iso_numeric"=> "678",
+    "smallest_denomination"=> 10000
   },
   "twd"=> {
     "priority"=> 100,
@@ -2675,7 +2775,7 @@ class Database
   "zmk"=> {
     "priority"=> 100,
     "iso_code"=> "ZMK",
-    "name"=> "Zambian Kwacha",
+    "name"=> "Zambian Kwacha K",
     "symbol"=> "ZK",
     "disambiguate_symbol"=> "ZMK",
     "alternate_symbols"=> [],
@@ -2692,7 +2792,7 @@ class Database
   "zmw"=> {
     "priority"=> 100,
     "iso_code"=> "ZMW",
-    "name"=> "Zambian Kwacha",
+    "name"=> "Zambian Kwacha W",
     "symbol"=> "K",
     "disambiguate_symbol"=> "ZMW",
     "alternate_symbols"=> [],
@@ -2710,20 +2810,28 @@ class Database
     @@database
   end
 
-  def self.legend
+  def self.find_by_code
         @@database.collect do|key, value|
         currency_hash = {}
-        currency_hash[value["name"]] = key
+        currency_hash[value["name"]] = key.upcase
         currency_hash
         end   
       end
   
-      def self.find_by_location
+      def self.info_by_country
         @@database.collect do|key ,value|
-        currency_hash = {}
+        currency_hash = Hash.new
         currency_hash[value["name"]]=value
         currency_hash
         end   
+      end
+
+      def self.list_of_countries
+        @@database.collect do|key ,value|
+          countries = []
+          countries << value["name"]
+          countries 
+          end
       end
   
 end  
