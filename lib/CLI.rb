@@ -6,27 +6,24 @@ class CLI
     
     def greeting
         puts  "Hi!".colorize(:yellow) 
-        # sleep(1)
-        puts "Welcome to your currency tranlslator! Here, you can find out what your money means in a particular country or all over the world!".colorize(:yellow)
-        # sleep(2)
+
+        puts "Welcome to your currency translator! Here, you can find out what your money means in a particular country or all over the world!".colorize(:yellow)
+        puts "Please note that you can quit the application at any given time by entering 'exit' whenever being prompted for a response, or select it from an available list of options."
+        sleep(2)
         self.currency_info
     end
 
     def currency_info
         puts "Please type the currency you currently use by its three-letter ISO code and press enter.".colorize(:yellow)
-        # sleep(1)
         puts "If you're unsure, simply type 'help' and press enter for a list of all countries with their corresponding code.".colorize(:yellow)      
         @@input = gets.downcase.strip
             if @@input == "help"
                 DataHandler.legend_table
-                # sleep(1)
-                # binding.pry
                 puts "You can refer to the legend above to enter the ISO code.".colorize(:yellow)
                 sleep(1)
                 self.currency_info
             elsif DataHandler.all.has_key?(@@input) 
-                response = API.get_currency(@@input)
-                # binding.pry
+                response = API.get_currency(@@input) 
                 self.options(response)
             elsif @@input == "exit"
                 exit
@@ -52,7 +49,7 @@ class CLI
                 self.compare_to_all
             elsif input == "3"
                 self.currency_info
-            elsif input == "4"
+            elsif input == "4" || input == "exit"
                 exit
             else
                 puts "Hmmm..I couldn't seem to understand that, lets try again.".colorize(:red)
@@ -74,9 +71,9 @@ class CLI
             sleep(1)
             puts "Each #{DataHandler.all["#{@@input}"]["name"]} is equal to #{API.all[input.upcase]} #{DataHandler.all["#{input}"]["name"]}s.".colorize(:green) 
             sleep(2) 
-            puts "Now that you know the actual value of #{DataHandler.all["#{input}"]["name"]}s, here's some more details specific to the currency:".colorize(:yellow)
+            puts "Now that you know the actual value of #{DataHandler.all["#{input}"]["name"]}s, here are some more details specific to the currency:".colorize(:yellow)
             sleep(2)
-            ap DataHandler.all[input]####
+            DataHandler.find_details_table(input)
             sleep(3)
             self.options(@@input)
         elsif input == "exit"
@@ -93,4 +90,3 @@ class CLI
     end
 end
 
- # input.split.map(&:capitalize).join(' ')

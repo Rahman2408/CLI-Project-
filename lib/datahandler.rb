@@ -2809,6 +2809,17 @@ class DataHandler
   def self.all
     @@database
   end
+  def self.find_details_table(input)
+     rows=
+     @@database.values_at(input).first.to_a do|key, value|
+     currency=[]
+     currency << key[value]
+     currency.transpose.flatten!(1)
+  end
+  rows=rows.to_a
+      table = Terminal::Table.new :title => "Currency of Interest".colorize(:yellow), :headings => ['Attributes'.colorize(:red), 'Details'.colorize(:green)], :rows => rows
+      puts table  
+  end
 
   def self.find_by_code
         @@database.collect do|key, value|
@@ -2824,16 +2835,7 @@ class DataHandler
         currency_hash[value["name"]]=value
         currency_hash
         end   
-   end
-
-  def self.list_of_countries
-        @@database.collect do|key ,value|
-          countries = []
-          countries << value["name"]
-          countries 
-          end
   end
-  
   def self.legend_table
         rows = []
         
@@ -2852,7 +2854,7 @@ class DataHandler
     API.all_formatted.map do |key ,value|
     countries = []
     countries << key.first 
-    rows << countries.transpose.flatten!(1)
+     rows << countries.transpose.flatten!(1)
     end        
     
     table = Terminal::Table.new :title => "Exchange Rates".colorize(:red), :headings => ['Country'.colorize(:yellow), 'Value'.colorize(:green)], :rows => rows
