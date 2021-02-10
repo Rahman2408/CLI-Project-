@@ -1,4 +1,3 @@
-
 class CLI
     @@input
     
@@ -21,7 +20,7 @@ class CLI
                 puts "You can refer to the legend above to enter the ISO code.".colorize(:yellow)
                 sleep(1)
                 self.currency_info
-            elsif DataHandler.all.has_key?(@@input) 
+            elsif CurrencyData.all.has_key?(@@input) 
                 response = API.get_currency(@@input) 
                 self.options(response)
             elsif @@input == "exit"
@@ -34,7 +33,7 @@ class CLI
         end
 
     def options(data)
-        puts "Your native currency is the #{DataHandler.all["#{@@input}"]["name"]}.".colorize(:yellow)
+        puts "With your default currency being the #{CurrencyData.new(@@input).name}.".colorize(:yellow)
         sleep(1)
         puts "What would you like to do next? Select one of the following by typing in its associated number and pressing enter:".colorize(:yellow)
         puts "1. Compare to another country's currency.".colorize(:green)
@@ -65,12 +64,12 @@ class CLI
             sleep(1)
             puts "Refer to the list above to find the code for the country you'd like to compare your currency to.".colorize(:yellow)
             self.compare_to_other
-        elsif DataHandler.all.has_key?(input)
-            puts "Nice! You're looking to compare to #{DataHandler.all["#{input}"]["name"]}s.".colorize(:yellow)
+        elsif CurrencyData.all.has_key?(input)
+            puts "Nice! You're looking to compare your money to #{CurrencyData.new(input).name}s.".colorize(:yellow)
             sleep(1)
-            puts "Each #{DataHandler.all["#{@@input}"]["name"]} is equal to #{API.all[input.upcase]} #{DataHandler.all["#{input}"]["name"]}s.".colorize(:green) 
+            puts "Each #{CurrencyData.new(@@input).name} is equal to #{API.all[input.upcase]} #{CurrencyData.new(input).name}s.".colorize(:green) 
             sleep(2) 
-            puts "Now that you know the actual value of #{DataHandler.all["#{input}"]["name"]}s, here are some more details specific to the currency:".colorize(:yellow)
+            puts "Here are some more details specific to #{CurrencyData.new(input).name}s:".colorize(:yellow)
             sleep(2)
             DataHandler.find_details_table(input)
             sleep(3)
