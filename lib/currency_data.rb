@@ -2803,37 +2803,35 @@ class CurrencyData
       "smallest_denomination"=> 5
     }
   }
-
-  def initialize(iso)
-    @name = @@database["#{iso}"]["name"]
-    @symbol = @@database["#{iso}"]["symbol"]
-    @iso_code = @@database["#{iso}"]["iso_code"]
-    @subunit = @@database["#{iso}"]["subunit"]
-    @subunit_to_unit = @@database["#{iso}"]["subunit_to_unit"]
+@@currencies = []
+  def initialize(hash)
+    @name = hash["name"]
+    @symbol = hash["symbol"]
+    @iso_code = hash["iso_code"]
+    @subunit = hash["subunit"]
+    @subunit_to_unit = hash["subunit_to_unit"]
+    @@currencies << self
   end
   
-  def name
-    name = @name
+  def self.currencies
+    @@currencies
   end
   
-  def symbol
-   symbol = @symbol
+  def self.make_all_currencies
+    @@database.each do |key, value|
+    self.new(value)
+   end 
+   
   end
-  
-  def iso_code
-    iso_code = @iso_code
+          #build a method find by iso (self.currencies.find(iso) refactor code to use the objects
+      
+  def self.find_by_iso(input)
+    self.currencies.find{|code| code.iso_code == input}
   end
 
-  def subunit
-    subunit = @subunit
-  end
-
-  def subunit_to_unit
-    subunit_to_unit = @subunit_to_unit
-  end
- 
   def self.all
      @@database
   end
+  binding.pry
 
 end

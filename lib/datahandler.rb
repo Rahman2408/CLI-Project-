@@ -1,5 +1,5 @@
 class DataHandler
-  
+ 
   def self.find_details_table(input)
      rows=
      CurrencyData.all.values_at(input).first.to_a do|key, value|
