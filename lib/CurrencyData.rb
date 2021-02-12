@@ -380,23 +380,6 @@ class CurrencyData
       "iso_numeric"=> "933",
       "smallest_denomination"=> 1
     },
-    "byr"=> {
-      "priority"=> 50,
-      "iso_code"=> "BYR",
-      "name"=> "Belarusian Ruble",
-      "symbol"=> "Br",
-      "disambiguate_symbol"=> "BYR",
-      "alternate_symbols"=> ["бел. руб.", "б.р.", "руб.", "р."],
-      "subunit"=> "",
-      "subunit_to_unit"=> 1,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ",",
-      "thousands_separator"=> " ",
-      "iso_numeric"=> "974",
-      "smallest_denomination"=> 100
-    },
     "bzd"=> {
       "priority"=> 100,
       "iso_code"=> "BZD",
@@ -461,20 +444,6 @@ class CurrencyData
       "thousands_separator"=> ",",
       "iso_numeric"=> "756",
       "smallest_denomination"=> 5
-    },
-    "clf"=> {
-      "priority"=> 100,
-      "iso_code"=> "CLF",
-      "name"=> "Unidad de Fomento",
-      "symbol"=> "UF",
-      "alternate_symbols"=> [],
-      "subunit"=> "Peso",
-      "subunit_to_unit"=> 10000,
-      "symbol_first"=> true,
-      "html_entity"=> "&#x20B1;",
-      "decimal_mark"=> ",",
-      "thousands_separator"=> ".",
-      "iso_numeric"=> "990"
     },
     "clp"=> {
       "priority"=> 100,
@@ -1243,26 +1212,10 @@ class CurrencyData
       "iso_numeric"=> "174",
       "smallest_denomination"=> 100
     },
-    "kpw"=> {
-      "priority"=> 100,
-      "iso_code"=> "KPW",
-      "name"=> "North Korean Won",
-      "symbol"=> "₩",
-      "alternate_symbols"=> [],
-      "subunit"=> "Chŏn",
-      "subunit_to_unit"=> 100,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "&#x20A9;",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "408",
-      "smallest_denomination"=> 1
-    },
     "krw"=> {
       "priority"=> 100,
       "iso_code"=> "KRW",
-      "name"=> "South Korean Won",
+      "name"=> "Korean Won",
       "symbol"=> "₩",
       "subunit"=>"",
       "subunit_to_unit"=> 1,
@@ -2055,21 +2008,6 @@ class CurrencyData
       "iso_numeric"=> "654",
       "smallest_denomination"=> 1
     },
-    "skk"=> {
-      "priority"=> 100,
-      "iso_code"=> "SKK",
-      "name"=> "Slovak Koruna",
-      "symbol"=> "Sk",
-      "alternate_symbols"=> [],
-      "subunit"=> "Halier",
-      "subunit_to_unit"=> 100,
-      "symbol_first"=> true,
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "703",
-      "smallest_denomination"=> 50
-    },
     "sll"=> {
       "priority"=> 100,
       "iso_code"=> "SLL",
@@ -2136,22 +2074,6 @@ class CurrencyData
       "iso_numeric"=> "728",
       "smallest_denomination"=> 5
     },
-    "std"=> {
-      "priority"=> 100,
-      "iso_code"=> "STD",
-      "name"=> "São Tomé and Príncipe Dobra",
-      "symbol"=> "Db",
-      "alternate_symbols"=> [],
-      "subunit"=> "Cêntimo",
-      "subunit_to_unit"=> 100,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "678",
-      "smallest_denomination"=> 10000
-    },
     "stn"=> {
       "priority"=> 100,
       "iso_code"=> "STN",
@@ -2167,21 +2089,6 @@ class CurrencyData
       "thousands_separator"=> ",",
       "iso_numeric"=> "678",
       "smallest_denomination"=> 10000
-    },
-    "svc"=> {
-      "priority"=> 100,
-      "iso_code"=> "SVC",
-      "name"=> "Salvadoran Colón",
-      "symbol"=> "₡",
-      "alternate_symbols"=> ["¢"],
-      "subunit"=> "Centavo",
-      "subunit_to_unit"=> 100,
-      "symbol_first"=> true,
-      "html_entity"=> "&#x20A1;",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "222",
-      "smallest_denomination"=> 1
     },
     "syp"=> {
       "priority"=> 100,
@@ -2530,102 +2437,7 @@ class CurrencyData
       "iso_numeric"=> "950",
       "smallest_denomination"=> 100
     },
-    "xag"=> {
-      "priority"=> 100,
-      "iso_code"=> "XAG",
-      "name"=> "Silver (Troy Ounce)",
-      "symbol"=> "oz t",
-      "disambiguate_symbol"=> "XAG",
-      "alternate_symbols"=> [],
-      "subunit"=> "oz",
-      "subunit_to_unit"=> 1,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "961"
-    },
-    "xau"=> {
-      "priority"=> 100,
-      "iso_code"=> "XAU",
-      "name"=> "Gold (Troy Ounce)",
-      "symbol"=> "oz t",
-      "disambiguate_symbol"=> "XAU",
-      "alternate_symbols"=> [],
-      "subunit"=> "oz",
-      "subunit_to_unit"=> 1,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "959"
-    },
-    "xba"=> {
-      "priority"=> 100,
-      "iso_code"=> "XBA",
-      "name"=> "European Composite Unit",
-      "symbol"=> "",
-      "disambiguate_symbol"=> "XBA",
-      "alternate_symbols"=> [],
-      "subunit"=> "",
-      "subunit_to_unit"=> 1,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "955"
-    },
-    "xbb"=> {
-      "priority"=> 100,
-      "iso_code"=> "XBB",
-      "name"=> "European Monetary Unit",
-      "symbol"=> "",
-      "disambiguate_symbol"=> "XBB",
-      "alternate_symbols"=> [],
-      "subunit"=> "",
-      "subunit_to_unit"=> 1,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "956"
-    },
-    "xbc"=> {
-      "priority"=> 100,
-      "iso_code"=> "XBC",
-      "name"=> "European Unit of Account 9",
-      "symbol"=> "",
-      "disambiguate_symbol"=> "XBC",
-      "alternate_symbols"=> [],
-      "subunit"=> "",
-      "subunit_to_unit"=> 1,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "957"
-    },
-    "xbd"=> {
-      "priority"=> 100,
-      "iso_code"=> "XBD",
-      "name"=> "European Unit of Account 17",
-      "symbol"=> "",
-      "disambiguate_symbol"=> "XBD",
-      "alternate_symbols"=> [],
-      "subunit"=> "",
-      "subunit_to_unit"=> 1,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "958"
-    },
+
     "xcd"=> {
       "priority"=> 100,
       "iso_code"=> "XCD",
@@ -2674,22 +2486,6 @@ class CurrencyData
       "iso_numeric"=> "952",
       "smallest_denomination"=> 100
     },
-    "xpd"=> {
-      "priority"=> 100,
-      "iso_code"=> "XPD",
-      "name"=> "Palladium",
-      "symbol"=> "oz t",
-      "disambiguate_symbol"=> "XPD",
-      "alternate_symbols"=> [],
-      "subunit"=> "oz",
-      "subunit_to_unit"=> 1,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "964"
-    },
     "xpf"=> {
       "priority"=> 100,
       "iso_code"=> "XPF",
@@ -2705,38 +2501,6 @@ class CurrencyData
       "thousands_separator"=> ",",
       "iso_numeric"=> "953",
       "smallest_denomination"=> 100
-    },
-    "xpt"=> {
-      "priority"=> 100,
-      "iso_code"=> "XPT",
-      "name"=> "Platinum",
-      "symbol"=> "oz t",
-      "alternate_symbols"=> [],
-      "subunit"=> "",
-      "subunit_to_unit"=> 1,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "962",
-      "smallest_denomination"=> ""
-    },
-    "xts"=> {
-      "priority"=> 100,
-      "iso_code"=> "XTS",
-      "name"=> "Codes specifically reserved for testing purposes",
-      "symbol"=> "",
-      "alternate_symbols"=> [],
-      "subunit"=> "",
-      "subunit_to_unit"=> 1,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "963",
-      "smallest_denomination"=> ""
     },
     "yer"=> {
       "priority"=> 100,
@@ -2769,23 +2533,6 @@ class CurrencyData
       "iso_numeric"=> "710",
       "smallest_denomination"=> 10
     },
-    "zmk"=> {
-      "priority"=> 100,
-      "iso_code"=> "ZMK",
-      "name"=> "Zambian Kwacha K",
-      "symbol"=> "ZK",
-      "disambiguate_symbol"=> "ZMK",
-      "alternate_symbols"=> [],
-      "subunit"=> "Ngwee",
-      "subunit_to_unit"=> 100,
-      "symbol_first"=> false,
-      "format"=> "%n %u",
-      "html_entity"=> "",
-      "decimal_mark"=> ".",
-      "thousands_separator"=> ",",
-      "iso_numeric"=> "894",
-      "smallest_denomination"=> 5
-    },
     "zmw"=> {
       "priority"=> 100,
       "iso_code"=> "ZMW",
@@ -2804,7 +2551,8 @@ class CurrencyData
     }
   }
 @@currencies = []
-  def initialize(hash)
+
+def initialize(hash)
     @name = hash["name"]
     @symbol = hash["symbol"]
     @iso_code = hash["iso_code"]
@@ -2813,25 +2561,21 @@ class CurrencyData
     @@currencies << self
   end
   
-  def self.currencies
-    @@currencies
-  end
-  
   def self.make_all_currencies
     @@database.each do |key, value|
     self.new(value)
    end 
+  end
+  
+  self.make_all_currencies
+  
+  def self.currencies
+    @@currencies
+  end
    
-  end
-          #build a method find by iso (self.currencies.find(iso) refactor code to use the objects
-      
   def self.find_by_iso(input)
-    self.currencies.find{|code| code.iso_code == input}
+   self.currencies.find{|code| code.iso_code == input}
   end
-
-  def self.all
-     @@database
-  end
-  binding.pry
-
+  
 end
+
