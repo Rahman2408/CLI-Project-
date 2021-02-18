@@ -55,7 +55,7 @@ class CLI
         if input == "HELP"
             TableMaker.legend_table
             puts "Refer to the list above to find the code for the country you'd like to compare your currency to.".colorize(:yellow)
-            self.compare_to_other
+            self.compare_to_other(input1,rates)
         elsif CurrencyData.find_by_iso(input)
             country = CurrencyData.find_by_iso(input)
             country1 = CurrencyData.find_by_iso(input1)
