@@ -2567,7 +2567,7 @@ def initialize(hash)
    end 
   end
   
-  self.make_all_currencies
+  
   
   def self.currencies
     @@currencies

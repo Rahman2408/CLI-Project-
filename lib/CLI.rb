@@ -1,5 +1,6 @@
 class CLI
     def greeting
+        CurrencyData.make_all_currencies
         puts  "Hi!".colorize(:yellow)
         puts "Welcome to your currency translator! Here, you can find out what your money means in a particular country or all over the world!".colorize(:yellow)
         puts "Please note that you can quit the application at any given time by entering 'exit' whenever being prompted for a response, or select it from an available list of options."
@@ -15,7 +16,7 @@ class CLI
                 puts "You can refer to the legend above to enter the ISO code.".colorize(:yellow)
                 self.default_iso
             elsif CurrencyData.find_by_iso(input)
-                API.get_currency(input) 
+                API.new(input) 
                 rates = API.all
                 self.options(input,rates)
             elsif input == "EXIT"
